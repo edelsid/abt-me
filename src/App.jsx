@@ -1,12 +1,11 @@
 import { useState } from 'react'
+import Interface from './components/Interface'
 
 function App() {
 
   return (
     <>
-      <div>
-        hello
-      </div>
+      <Interface />
     </>
   )
 }
