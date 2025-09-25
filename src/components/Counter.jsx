@@ -19,6 +19,7 @@ export default function Counter() {
     console.log(numbers);
     if (numbers.length === 0) {
       setResult(`That's all questions done! 🎉`);
+      setLoading(false);
       return;
     }
     const cardNum = Math.floor(Math.random() * (numbers[numbers.length - 1] - numbers[0] + 1) + numbers[0]);
