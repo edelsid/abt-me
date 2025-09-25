@@ -38,7 +38,7 @@ ul {
 }
 
 button {
-  padding: 10px;
+  padding: 0.5em 2em;
   background-color: transparent;
   border: 3px solid white;
   border-radius: 10px;
@@ -57,7 +57,7 @@ button:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 50px;
+  gap: 30px;
 }
 
 .work__list {
@@ -98,6 +98,13 @@ button:hover {
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
 }
 
+.card_img {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
 .card:hover {
   transform: scale(1.05);
 }
@@ -131,7 +138,27 @@ button:hover {
   overflow-y: auto;
   transition: opacity 1s ease-in-out;
   color: var(--content-color);
-  padding: 50px;
+  padding: 100px;
+  font-size: 5rem;
+}
+
+.content__answers {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.answer {
+  font-size: 3rem;
+  transition: 0.5s ease;
+  transform: translateX(0px) translateY(0px);
+  transform-origin: center;
+}
+
+.right {
+  transform: translateY(-20px) scale(1.05);
+  border: 5px solid yellow;
+  color: yellow;
 }
 
 .content {
@@ -152,16 +179,48 @@ button:hover {
 
 .number {
   margin: 0;
+  font-size: 4rem;
   user-select: none;
 }
 
 .btn_content {
   position: relative;
-  color: var(--content-color);
   z-index: 999;
-  border: 2px solid var(--content-color);
   line-height: 1;
-  width: 40px;
   aspect-ratio: 1 / 1;
+  font-size: 3rem;
+  padding: 0.5em 1em;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 0;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading {
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  height: 60px;
+  margin: auto;
+  gap: 15px;
+  color: #ffffff;
+  z-index: 999;
+}
+
+.loading div {
+  font-size: 30px;
+  animation: grow-shrink 1s infinite;
+  line-height: 30px;
+}
+
+@keyframes grow-shrink {
+  0%, 100% {
+    transform: scale(0.7);
+  }
+  50% {
+    transform: scale(1.5);
+  }
 }

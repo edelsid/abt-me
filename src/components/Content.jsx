@@ -3,9 +3,11 @@ import { useEffect, useRef, useState } from "react"
 export default function Content({ content, closeCard, error }) {
   const contentWindow = useRef();
   const insideSpace = useRef();
+  const [ right, setRight ] = useState(null);
 
   const handleClose = () => {
     contentWindow.current.classList.remove("content_visible");
+    setRight(null);
     closeCard(content.id);
   }
 
@@ -20,12 +22,13 @@ export default function Content({ content, closeCard, error }) {
     try {
       const windowHeight = window.innerHeight;
       const style = window.getComputedStyle(contentWindow.current);
-      const padding = parseInt(style.getPropertyValue('padding'));
-      const newHeight = insideSpace.current.clientHeight + (2 * padding) + 90;
-      const finalHeight = newHeight > windowHeight ? newHeight : windowHeight;
     } catch (error) {
       return;
     }
+  }
+
+  const check = () => {
+    setRight(content.right);
   }
 
   return (
@@ -34,7 +37,17 @@ export default function Content({ content, closeCard, error }) {
       ref={contentWindow}>
         <button className="btn btn_content" onClick={handleClose}>&#10006;</button>
         <div className="content" ref={insideSpace}>
-          {content.question}
+          <p>{content.question}</p>
+          <ul className="content__answers">
+            {content.answers.map((item) => 
+              <li key={item.id} className="answer__el">
+                <button 
+                  className={`answer ${right === Number(item.id) ? "right" : ""}`} 
+                  onClick={check}>{item.text}
+                </button>
+              </li>
+            )}
+          </ul>
         </div>
     </div>
   )

@@ -1,14 +1,17 @@
 import { useState, useEffect } from "react"
+import Loading from "./Loading";
 
 export default function Counter() {
   const [ numbers, setNumbers ] = useState([1, 2, 3, 4, 5, 6]);
-  const [ result, setResult ] = useState(0)
+  const [ result, setResult ] = useState(0);
+  const [ loading, setLoading ] = useState(false);
 
   const debounce = (func) => {
     let timeoutId;
     return function executedFunction(...args) {
       clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => func.apply(this, args), 300);
+      setLoading(true);
+      timeoutId = setTimeout(() => func.apply(this, args), 1500);
     };
   }
 
@@ -20,6 +23,7 @@ export default function Counter() {
     }
     const cardNum = Math.floor(Math.random() * (numbers[numbers.length - 1] - numbers[0] + 1) + numbers[0]);
     setResult(cardNum);
+    setLoading(false);
   }
 
   const debouncedNum = debounce((item) => {
@@ -34,7 +38,7 @@ export default function Counter() {
 
   return (
     <div className="counter__wrapper">
-      <p className="number">{result}</p>
+      {loading ? <Loading /> : <p className="number">{result}</p>}
       <button className="counter__switch" onClick={debouncedNum}>Let's go!</button>
     </div>
   )

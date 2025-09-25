@@ -56,9 +56,13 @@ export default function Cards({ data, openCard, disabledNums }) {
             onClick={(e) => expand(e, item.id)} 
             id={item.id}
             style={{
-              backgroundImage: `${disabledNums.includes(item.id) ? "linear-gradient(60deg,rgba(139, 139, 139, 1) 0%, rgba(228, 228, 228, 1) 100%)" : item.color }`,
+              background: `${disabledNums.includes(item.id) ? "linear-gradient(60deg,rgba(139, 139, 139, 1) 0%, rgba(228, 228, 228, 1) 100%)" : item.color }`,
               animation: `jump ${0.3 * (data.indexOf(item) + 1)}s ease-in-out`
             }}>
+            <div 
+              className="card_img"
+              style={disabledNums.includes(item.id) ? {backgroundImage: ``} : {backgroundImage: `url(${item.img})`}}
+            />
             <h3 className="title title_work" style={{animation: "none"}}>{item.id}</h3>
           </div>
         </li>)}
