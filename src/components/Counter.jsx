@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react"
 import Loading from "./Loading";
 
-export default function Counter() {
-  const [ numbers, setNumbers ] = useState([1, 2, 3, 4, 5, 6]);
+export default function Counter({ nums }) {
+  const [ numbers, setNumbers ] = useState(Array.from({length: nums}, (_, i) => i + 1));
   const [ result, setResult ] = useState(0);
   const [ loading, setLoading ] = useState(false);
 
@@ -22,20 +22,16 @@ export default function Counter() {
       setLoading(false);
       return;
     }
-    const cardNum = Math.floor(Math.random() * (numbers[numbers.length - 1] - numbers[0] + 1) + numbers[0]);
+    const cardNum = numbers[Math.floor(Math.random() * numbers.length)];
     setResult(cardNum);
+    const filteredNumbers = numbers.filter(num => num !== cardNum);
+    setNumbers(filteredNumbers);
     setLoading(false);
   }
 
   const debouncedNum = debounce((item) => {
     getNum(item);
   });
-
-  useEffect(() => {
-    const filteredNumbers = numbers.filter(num => num !== result);
-    setNumbers(filteredNumbers);
-    console.log(result)
-  }, [result])
 
   return (
     <div className="counter__wrapper">

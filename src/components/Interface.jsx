@@ -48,7 +48,7 @@ export default function Interface() {
   return (
     <div className="interface">
       <Cards data={data} openCard={openCard} disabledNums={disabledNums}/>
-      <Counter />
+      <Counter nums={data.length}/>
       {open && 
       <Content 
         content={content || emptyContent} 
