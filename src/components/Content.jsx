@@ -13,22 +13,18 @@ export default function Content({ content, closeCard, error }) {
 
   useEffect(() => {
     setTimeout(() => {
-      calculateHeight();
       contentWindow.current.classList.add("content_visible");
     }, 300);
   }, []);
 
-  const calculateHeight = () => {
-    try {
-      const windowHeight = window.innerHeight;
-      const style = window.getComputedStyle(contentWindow.current);
-    } catch (error) {
-      return;
-    }
-  }
-
   const check = () => {
     setRight(content.right);
+  }
+
+  const checkSecond = (e) => {
+    if (content.photo.length > 1) {
+      e.target.src = content.photo[1];
+    }
   }
 
   return (
@@ -38,16 +34,25 @@ export default function Content({ content, closeCard, error }) {
         <button className="btn btn_content" onClick={handleClose}>&#10006;</button>
         <div className="content" ref={insideSpace}>
           <p>{content.question}</p>
-          <ul className="content__answers">
-            {content.answers.map((item) => 
-              <li key={item.id} className="answer__el">
-                <button 
-                  className={`answer ${right === Number(item.id) ? "right" : ""}`} 
-                  onClick={check}>{item.text}
-                </button>
-              </li>
-            )}
-          </ul>
+          <div className="content_main">
+            <div className="image_wrapper">
+              <img 
+                className={`image ${!right ? "invisible" : ""}`} 
+                src={content.photo[0]}
+                onClick={checkSecond}
+              />
+            </div>
+            <ul className="content__answers">
+              {content.answers.map((item) => 
+                <li key={item.id} className="answer__el">
+                  <button 
+                    className={`answer ${right === Number(item.id) ? "right" : ""}`} 
+                    onClick={check}>{item.text}
+                  </button>
+                </li>
+              )}
+            </ul>
+          </div>
         </div>
     </div>
   )

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Loading from "./Loading";
 
 export default function Counter({ nums }) {
