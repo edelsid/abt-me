@@ -22,8 +22,12 @@ export default function Content({ content, closeCard, error }) {
   }
 
   const checkSecond = (e) => {
-    if (content.photo.length > 1) {
+    if (content.photo.length > 1 && e.target.src.includes(content.photo[0])) {
       e.target.src = content.photo[1];
+      return;
+    }
+    if (content.photo.length > 1 && e.target.src.includes(content.photo[1])) {
+      e.target.src = content.photo[0];
     }
   }
 

@@ -31,7 +31,7 @@ const questions =[{
   }]
 }, {
   "id": 2,
-  "color": "linear-gradient(60deg,rgba(31, 139, 116, 1) 0%, rgba(63, 219, 84, 1) 100%)",
+  "color": "linear-gradient(60deg,rgba(21, 122, 100, 1) 0%, rgba(37, 204, 59, 1) 100%)",
   "question": "Drawing is one of my main hobbies 🎨 What do you think is my go-to way of drawing?",
   "right": 1,
   "img": jpg2,
@@ -65,7 +65,7 @@ const questions =[{
   }]
 }, {
   "id": 4,
-  "color": "linear-gradient(60deg,rgba(197, 126, 20, 1) 0%, rgba(231, 173, 47, 1) 100%)",
+  "color": "linear-gradient(60deg,rgba(179, 114, 16, 1) 0%, rgba(219, 158, 27, 1) 100%)",
   "question": "Sometimes we try our best and still fail 😔 There's one dish that I just can't manage to cook properly! What is it?",
   "img": jpg4,
   "photo": [ zrazy ],

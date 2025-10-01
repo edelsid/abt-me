@@ -3,6 +3,7 @@ import Cards from "./Cards";
 import Content from "./Content";
 import Counter from "./Counter";
 import data from "../assets/data";
+import circle from '../assets/circle.svg'
 
 export default function Interface() {
   const [ open, setOpen ] = useState(false);
@@ -22,7 +23,6 @@ export default function Interface() {
       openedWindow.classList.add("card_closed"); 
     }, 300);
     openedWindow.style.transform = "";
-    document.body.style.overflow = "visible";
     setDisabledNums([...disabledNums, id]);
     setContent(null);
     setOpen(false);
@@ -47,6 +47,8 @@ export default function Interface() {
 
   return (
     <div className="interface">
+      <img className="background img1" src={circle}/>
+      <img className="background img2" src={circle}/>
       <Cards data={data} openCard={openCard} disabledNums={disabledNums}/>
       <Counter nums={data.length}/>
       {open && 
